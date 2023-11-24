@@ -49,6 +49,20 @@ export class User extends Model<User> {
   })
   email: string;
 
+  @Column({
+    type: DataTypes.ENUM(
+      'ADMIN',
+      'FEEDBACK_AGENT',
+      'SUB_ADMIN',
+      'AREA_MANAGER',
+      'OEM',
+      'DEALER',
+      'EMPLOYEE'
+    ),
+    defaultValue: 'ADMIN',
+  })
+  role: string;
+
 
   @HasMany(() => Car)
   cars: Car[];

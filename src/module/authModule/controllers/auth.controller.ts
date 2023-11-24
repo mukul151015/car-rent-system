@@ -23,6 +23,7 @@ class AuthController {
         password: passwordHash,
         username: username,
         residence:residence,
+        role: 'EMPLOYEE',
 
       });
       const token = await jwtService.generateToken({
@@ -30,6 +31,7 @@ class AuthController {
         username: user.dataValues.username,
         email: user.dataValues.email,
         phone: user.phone,
+        role:user.role,
       });
       await tokenService.setToken(
         user.dataValues.userId,

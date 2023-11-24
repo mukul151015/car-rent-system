@@ -6,9 +6,10 @@ import { config } from '../config/config';
 import { User } from './User/user';
 import { Car } from './Car/car';
 import { Trip } from './Trip/trip';
+import { Expenditure } from './Expenditure/expenditure';
 
 
-const models = [User,Car,Trip];
+const models = [User,Car,Trip,Expenditure];
 
 const db: any = {};
 const dbConfig = config.dbConfig;

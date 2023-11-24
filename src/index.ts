@@ -14,6 +14,8 @@ import  carRoutes  from './module/carModule/routes';
 import { config } from './config/config';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
+import  tripRoutes  from './module/tripModule/routes';
+import  expenditureRoutes from './module/expenditureModule/routes';
 // express app initialized
 const app = express();
 // import the sagger lib
@@ -35,13 +37,17 @@ app.use(bodyParser.json());
 const authRouter = express.Router();
 const carRouter = express.Router();
 const tripRouter = express.Router();
+const expenditureRouter=express.Router();
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/car',carRouter);
 app.use('/api/v1/trip',tripRouter);
+app.use('/api/v1/expenditure',expenditureRouter);
 
 authRoutes.authRoutes(authRouter);
 carRoutes.carRoutes(carRouter);
+tripRoutes.tripRoutes(tripRouter);
+expenditureRoutes.expenditureRoutes(expenditureRouter);
 
 // Success Response
 app.use(handleResponse);
@@ -63,7 +69,7 @@ app.use((err: any, req: any, res: any, next: any) => {
 });
 
 // App listening on port
-app.listen(config.serverConfig.PORT, () => {
+export default app.listen(config.serverConfig.PORT, () => {
   console.log(`Server running on port ${config.serverConfig.PORT}`);
 });
 
